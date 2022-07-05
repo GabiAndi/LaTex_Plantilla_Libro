@@ -91,5 +91,27 @@ Podemos realizar un listado con tareas y demás:
 \lipsum[1-10]
 
 \newpage
+\pagestyle{empty}
 
-\section{Página horizontal}
+\begin{landscape}
+    \section{Página horizontal}
+
+    \lipsum[10-12]
+\end{landscape}
+
+\newpage
+\pagestyle{fancy}
+
+\section{Código de programación}
+
+\begin{minted}[frame=lines,fontsize=\normalsize,linenos,autogobble,breaklines]{python}
+    #!/bin/python3
+
+    import sys
+
+
+    if __name__ == "__main__":
+        print("Esto es código de Python")
+
+        sys.exit(0)
+\end{minted}
