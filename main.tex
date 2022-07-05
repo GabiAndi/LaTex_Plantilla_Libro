@@ -1,0 +1,170 @@
+%%%%%%%%%%%%%%%%%%%%%% Tipo de documento %%%%%%%%%%%%%%%%%%%%%%
+\documentclass[12pt]{book}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%% Configuración de paquetes %%%%%%%%%%%%%%%%%%
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[spanish,es-tabla]{babel}
+\usepackage[a4paper,left=20mm,right=20mm,top=20mm,bottom=20mm,bindingoffset=0mm]{geometry}
+
+\usepackage[type={CC},modifier={by-nc},version={4.0}]{doclicense}
+\usepackage{hyperref}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{latexsym}
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+\usepackage{xcolor-material}
+\usepackage{svg}
+\usepackage{charter}
+\usepackage{lipsum}
+\usepackage{enumitem}
+\usepackage{enumerate}
+\usepackage{multirow}
+\usepackage{multicol}
+\usepackage{tcolorbox}
+\usepackage{xargs}
+\usepackage{pifont}
+\usepackage{appendix}
+\usepackage{float}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%% Selección de fuente %%%%%%%%%%%%%%%%%%%%
+\renewcommand*\familydefault{bch}
+\fontfamily{\familydefault}\selectfont
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%% Variables del documento %%%%%%%%%%%%%%%%%%
+\newcommand{\titulodocumento}{Título del documento}
+\newcommand{\subtitulodocumento}{Subtítulo descriptivo del documento}
+\newcommand{\logodocumento}{\includesvg[inkscapelatex=false,width=0.5\textwidth]{src/images/doc/logo}}
+\newcommand{\autordocumento}{Aguirre Gabriel Andrés}
+\newcommand{\fechadocumento}{\today}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%% Configuración de links y metadatos %%%%%%%%%%%%%
+\hypersetup{
+    % Metadatos
+    pdftitle=\titulodocumento,
+    pdfsubtitle=\subtitulodocumento,
+    pdfauthor=\autordocumento,
+    pdfdate=\fechadocumento,
+    keeppdfinfo,
+    % Links
+    colorlinks=true,
+    linkcolor=MaterialIndigo700,
+    filecolor=MaterialIndigo700,      
+    urlcolor=MaterialIndigo700,
+    citecolor=MaterialIndigo700
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%% Configuración de cajas %%%%%%%%%%%%%%%%%%%
+\tcbuselibrary{theorems}
+
+% Caja simple con título
+\newtcolorbox{info}[1]
+{
+    colback=MaterialIndigo50,colframe=MaterialIndigo700,title=#1
+}
+
+% Caja agrupada para englobar tomas concretos
+\newtcbtheorem[auto counter,number within=section]{theo}{Teorema}
+{
+    fonttitle=\upshape,
+    fontupper=\slshape,
+    arc=0mm,
+    colback=MaterialIndigo50,
+    colframe=MaterialIndigo700
+}{teorema}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%% Tareas %%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newlist{todolist}{itemize}{2}
+\setlist[todolist]{label=$\square$}
+
+\newcommand{\cmark}{\ding{51}}
+\newcommand{\edit}{\ding{46}}
+\newcommand{\xmark}{\ding{55}}
+\newcommand{\done}{\rlap{$\square$}{\raisebox{2pt}{\large\hspace{1pt}\cmark}}\hspace{-2.5pt}}
+\newcommand{\wontfix}{\rlap{$\square$}{\large\hspace{1pt}\xmark}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%% Cabecera y pie de pagina %%%%%%%%%%%%%%%%%%
+\setlength{\headheight}{15pt}
+
+\fancyhead[R]{\autordocumento}
+\fancyhead[L]{\chaptername\ \thechapter}
+
+\fancyfoot[C]{Página \thepage}
+
+\renewcommand{\headrulewidth}{0.5pt}
+\renewcommand{\footrulewidth}{0.5pt}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%% Configuración de paginas %%%%%%%%%%%%%%%%%%%
+\pagestyle{empty}
+
+\patchcmd{\chapter}{plain}{empty}{}{}
+\patchcmd{\part}{plain}{empty}{}{}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%% Apéndices %%%%%%%%%%%%%%%%%%%%%%%%%%
+\renewcommand{\appendixname}{Apéndices}
+\renewcommand{\appendixtocname}{Apéndices}
+\renewcommand{\appendixpagename}{Apéndices}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%% Inicio del documento %%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%% Caratula %%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{titlepage}
+    \begin{center}
+        \vspace*{\fill}
+        {\Huge{\titulodocumento \\}}
+        \vspace{0.25cm}
+        {\large{\subtitulodocumento \\}}
+        \vspace{2cm}
+        {\logodocumento \\}
+        \vspace{2cm}
+        {\large{Autores: \autordocumento \\}}
+        {\large{Última modificación: \fechadocumento}}
+        \vspace*{\fill}
+    \end{center}
+\end{titlepage}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%% Información de documento %%%%%%%%%%%%%%%%%%%
+\input{src/info/information.tex}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%% Tablas de contenido %%%%%%%%%%%%%%%%%%%%%
+\tableofcontents
+\listoffigures
+\listoftables
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%% Capítulos %%%%%%%%%%%%%%%%%%%%%%%%%%
+\part{Introducción a \LaTeX}
+\input{src/chapters/chapter_1.tex}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%% Apéndices %%%%%%%%%%%%%%%%%%%%%%%%%%%
+\part{Apéndices}
+\appendix
+\input{src/appendix/appendix_1.tex}
+\input{src/appendix/appendix_2.tex}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%% Referencias %%%%%%%%%%%%%%%%%%%%%%%%%
+\pagestyle{empty}
+\bibliographystyle{unsrt}
+\bibliography{src/ref/bibliography}
+\nocite{*}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    
+\end{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

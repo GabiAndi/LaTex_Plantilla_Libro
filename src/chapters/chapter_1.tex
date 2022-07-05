@@ -1,0 +1,95 @@
+\chapter{Tipos de documentos de \LaTeX}
+
+\pagestyle{empty}
+
+En este capítulo vamos a ver los conceptos básicos de \LaTeX. Crearemos documentos y aprenderemos a utilizar la plantilla, con lo cual usted podrá observar ejemplos de los distintos estilos contenidos.
+
+\newpage
+\pagestyle{fancy}
+
+\section{Ejemplo de sección}
+
+Este capítulo es para mostrarle como es la plantilla. Usted puede citar \cite{Rojas2018}.
+
+\subsection{Ejemplo de subsección}
+
+Puede hacer cajas de colores:
+
+\begin{info}{Título de la caja}
+    Añadir contenido para resaltar su importancia
+\end{info}
+
+\subsubsection{Subsubsección}
+
+También pude definir tipos de cajas, como este teorema:
+
+\begin{theo}{Sumatoria de números}{id_para_reconocer}
+    Para todo $n$ natural:
+
+    \begin{equation}
+        \sum\limits_{i=1}^n i = \frac{n(n+1)}{2}
+    \end{equation}
+\end{theo}
+
+Luego podemos hacer referencia a \ref{teorema:id_para_reconocer} para poder explicar su contenido.
+
+\subsubsection{Figuras y tablas}
+
+\begin{figure}[H]
+    \centering
+    \includesvg[inkscapelatex=false,width=0.3\textwidth]{src/images/doc/logo}
+    \caption{Ejemplo de figura}
+    \label{fgr:logo}
+\end{figure}
+
+\begin{table}[H]
+    \begin{center}
+        \begin{tabular}{|l|l|}
+            \hline
+            \multicolumn{2}{|c|}{Sopladores de aireación} \\ \hline
+            Tipo & Desplazamiento positivo \\
+            Marca & Repicky \\
+            Modelo & R3.0 \\
+            Capacidad & 1.631$m^{3} / h$ \\
+            Tamaño del motor & 75HP \\ \hline
+        \end{tabular}
+    \end{center}
+
+    \caption{Características de los Sopladores Repicky R3.0.}
+    \label{fgr:repicky}
+\end{table}
+
+\section{Lista de tareas}
+
+Podemos realizar un listado con tareas y demás:
+
+\begin{todolist}
+    \item{Abstract.}
+    \item[\done]{Descripción del proyecto:}
+    \begin{todolist}
+        \item[\done]{Introducción a la problematica.}
+        \item[\done]{Análisis de solución.}
+        \item[\done]{Planificación del proyecto.}
+    \end{todolist} 
+    \item[\done]{Desarrollo técnico:}
+    \begin{todolist}
+        \item[\done]{Selección de componentes.}
+        \item[\done]{Diseño del sistema.}
+        \item[\done]{Cálculo de presupuesto.}
+        \item[\done]{Pruebas en prototipo.} 
+    \end{todolist} 
+    \item{Conclusiones.}
+    \item[\done]{Anexos:}
+    \begin{todolist}
+        \item[\done]{Esquemas y planos.}
+        \item[\done]{Desarrollos complementarios.}
+    \end{todolist} 
+\end{todolist}
+
+\section{Sección con contenido largo}
+
+\lipsum[1-10]
+
+\newpage
+
+\section{Página horizontal}
